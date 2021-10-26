@@ -1,0 +1,220 @@
+{% extends 'appraisal/base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block 'content' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>{{object}}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Vehicle Detail</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Vehicle Detail</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+            <div class="row">
+              {% if object.model %}
+              <div class="col-12 col-sm-4">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">Model</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.model}}</span>
+                  </div>
+                </div>
+
+              </div>
+              {% endif %}
+              {% if object.selling_price %}
+              <div class="col-12 col-sm-4">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">Selling Price Range</span>
+                    <span class="info-box-number text-center text-muted mb-0">${{object.selling_price | intcomma}}</span>
+                  </div>
+                </div>
+
+              </div>
+              {% endif %}
+              {% if object.year %}
+              <div class="col-12 col-sm-4">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">Model Year</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.year}}</span>
+                  </div>
+                </div>
+
+              </div>
+              {% endif %}
+            </div>
+            <div class="row">
+            {% if object.manufacturer or object.engine_no or object.engine or object.manufacture_year or object.chassis%}
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-text-width"></i>
+                      Model Details
+                    </h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <dl>
+                    {% if object.manufacturer %}
+                      <dt>Manufacturer</dt>
+                      <dd>{{object.manufacturer}}</dd>
+                    {% endif %}
+                    {% if object.engine_no %}
+                      <dt>Engine #</dt>
+                      <dd>{{object.engine_no}}</dd>
+                    {% endif %} 
+                    {% if object.engine %}
+                      <dt>Engine</dt>
+                      <dd>{{object.engine}}</dd>
+                    {% endif %}
+                    {% if object.manufacture_year %}
+                      <dt>Manufacture Year</dt>
+                      <dd>{{object.manufacture_year}}</dd>
+                    {% endif %}  
+                    {% if object.chassis %}
+                      <dt>Chassis</dt>
+                      <dd>{{object.chassis}}</dd>
+                    {% endif %}        
+                    </dl>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+
+              {% endif %}
+              {% if object.engine_and_trans or object.interior or object.exterior or object.suspension or object.safety or object.other_features%}
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-text-width"></i>
+                      Vehicle Features
+                    </h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <dl>
+                    {% if object.engine_and_trans %}
+                      <dt>Engine and Transmission</dt>
+                      <dd>{{object.engine_and_trans}}</dd>
+                    {% endif %}
+                    {% if object.interior %}
+                      <dt>Interior</dt>
+                      <dd>{{object.interior}}</dd>
+                    {% endif %}
+                    {% if object.exterior %}
+                      <dt>Exterior</dt>
+                      <dd>{{object.exterior | intcomma}}</dd>
+                    {% endif %}
+                    {% if object.suspension %}
+                      <dt>Suspension</dt>
+                      <dd>{{object.suspension}}</dd>
+                    {% endif %}
+                    {% if object.safety %}
+                      <dt>Safety</dt>
+                      <dd>{{object.safety}}</dd>
+                    {% endif %} 
+                    {% if object.other_features %}
+                      <dt>Other Features</dt>
+                      <dd>{{object.other_features}}</dd>
+                    {% endif %}     
+                    </dl>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+            <h3 class="text-primary"><i class="fas fa-pen"></i> Expert Auto Appraisal</h3>
+            <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu
+              stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+            <br>
+            <div class="text-muted">
+              <p class="text-sm">Client Company
+                <b class="d-block">Deveint Inc</b>
+              </p>
+              <p class="text-sm">Project Leader
+                <b class="d-block">Tony Chicken</b>
+              </p>
+            </div>
+
+            <h5 class="mt-5 text-muted">Project files</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                  Functional-requirements.docx</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
+                  Email-from-flatbal.mln</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                  Contract-10_12_2014.docx</a>
+              </li>
+            </ul>
+            <div class="text-center mt-5 mb-3">
+              <a href="#" class="btn btn-sm btn-primary">Add files</a>
+              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}

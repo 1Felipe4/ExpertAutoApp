@@ -1,0 +1,164 @@
+{% extends 'appraisal/base.html' %}
+
+{%load static%}
+
+{% block 'content' %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          {% if object %}
+          <h1>Edit Vehicle</h1>          
+          {% else %}
+          <h1>Add Vehicle</h1>
+          {% endif %}
+          
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Layout</a></li>
+            <li class="breadcrumb-item active">Fixed Layout</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">General</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="{{ form.model.id_for_label }}">Model</label>
+                {{ form.model}}
+                <span id="" class="text-danger text-sm">{{form.model.errors}}</span>
+              </div>
+              
+              <div class="form-group">
+                <label for="{{ form.year.id_for_label }}">Year</label>
+                {{ form.year}}
+                <span id="" class="text-danger text-sm">{{form.year.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.selling_price.id_for_label }}">Selling Price</label>
+                {{ form.selling_price}}
+                <span id="" class="text-danger text-sm">{{form.selling_price.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.manufacturer.id_for_label }}">Manufacturer</label>
+                {{ form.manufacturer}}
+                <span id="" class="text-danger text-sm">{{form.manufacturer.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.engine.id_for_label }}">Engine</label>
+                {{ form.engine}}
+                <span id="" class="text-danger text-sm">{{form.engine.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.chassis_no.id_for_label }}">Chassis #</label>
+                {{ form.chassis_no}}
+                <span id="" class="text-danger text-sm">{{form.chassis_no.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.engine_no.id_for_label }}">Engine #</label>
+                {{ form.engine_no}}
+                <span id="" class="text-danger text-sm">{{form.engine_no.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.manufacture_year.id_for_label }}">Manufacture Year</label>
+                {{ form.manufacture_year}}
+                <span id="" class="text-danger text-sm">{{form.manufacture_year.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.engine_and_trans.id_for_label }}">Engine and Transmission</label>
+                {{ form.engine_and_trans}}
+                <span id="" class="text-danger text-sm">{{form.engine_and_trans.errors}}</span>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Budget</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="{{ form.interior.id_for_label }}">interior</label>
+                {{ form.interior}}
+                <span id="" class="text-danger text-sm">{{form.interior.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.exterior.id_for_label }}">exterior</label>
+                {{ form.exterior}}
+                <span id="" class="text-danger text-sm">{{form.exterior.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.suspension.id_for_label }}">suspension</label>
+                {{ form.suspension}}
+                <span id="" class="text-danger text-sm">{{form.suspension.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.safety.id_for_label }}">safety</label>
+                {{ form.safety}}
+                <span id="" class="text-danger text-sm">{{form.safety.errors}}</span>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.other_features.id_for_label }}">other_features</label>
+                {{ form.other_features}}
+                <span id="" class="text-danger text-sm">{{form.other_features.errors}}</span>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        {{ form.non_field_errors }}
+
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-success float-right">
+
+          {% if object %}
+          Update Vehicle          
+          {% else %}
+          Add Vehicle
+          {% endif %}
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}
