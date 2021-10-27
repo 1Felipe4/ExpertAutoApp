@@ -28,7 +28,7 @@ SECRET_KEY = 'ic(r6m9$r228xcpdet*3rjhb&0r3j3(4a)eqf0#$h#3&^7vq7x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['goldan.xyz']
 
 
 # Application definition
